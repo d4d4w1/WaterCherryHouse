@@ -828,3 +828,22 @@ body.view-control-buttons .viewControlButton {
 .viewControlButton-6 {
   margin-left: 105px;
 }
+
+
+/* Nasconde completamente la lista scene a sinistra */
+#sceneList, .sceneList {
+  display: none !important;
+}
+
+
+/* Nasconde barra in alto */
+#titleBar, .titleBar {
+  display: none !important;
+}
+
+
+/* Nasconde i numeri e tooltip degli hotspot */
+.hotspot .tooltip {
+  display: none !important;
+  visibility: hidden !important;
+}
