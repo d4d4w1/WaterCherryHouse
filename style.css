@@ -847,3 +847,23 @@ body.view-control-buttons .viewControlButton {
   display: none !important;
   visibility: hidden !important;
 }
+
+/* Nasconde qualsiasi pannello laterale sinistro */
+div[class*="scenelist"],
+div[id*="sceneList"] {
+  display: none !important;
+}
+
+/* Nasconde qualsiasi barra di intestazione in alto */
+div[class*="titlebar"],
+div[id*="titleBar"],
+header {
+  display: none !important;
+}
+
+/* Nasconde testo/numeri vicino agli hotspot */
+.hotspot span,
+.hotspot .tooltip {
+  display: none !important;
+  visibility: hidden !important;
+}
