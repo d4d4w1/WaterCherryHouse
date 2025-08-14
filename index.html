@@ -1,6 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <style>
+  /* Scritta grande in basso a sinistra */
+  #locationLabel {
+     position: fixed;
+    bottom: 24px;
+    left: 24px;
+    color: rgba(255,255,255,0.8);
+    font-size: 12px;
+    font-family: 'Roboto', sans-serif;
+    z-index: 999999;
+    pointer-events: none;
+    opacity: 0;
+    animation: fadeIn 1.5s forwards;
+    animation-delay: 2s;
+  }
+
+  /* Credito in basso a destra */
+  #credits {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    color: rgba(255,255,255,0.8);
+    font-size: 12px;
+    font-family: 'Roboto', sans-serif;
+    z-index: 999999;
+    pointer-events: none;
+    opacity: 0;
+    animation: fadeIn 1.5s forwards;
+    animation-delay: 2s;
+  }
+
+  /* Effetto fade-in */
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+</style>
+
 <title>Water Cherry House Virtual Tour</title>
 <meta charset="utf-8">
 <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui" />
@@ -8,8 +45,40 @@
 <link rel="stylesheet" href="vendor/reset.min.css">
 <link rel="stylesheet" href="style.css">
 </head>
+  
 <body class="multiple-scenes ">
 
+<div id="locationLabel">WATER CHERRY HOUSE by KENGO KUMA & ASSOCIATES</div>
+<div id="credits">VITUAL TOUR BY ANDREA GERTOSIO</div>
+
+<audio id="bg-music" loop>
+  <source src="music.mp3" type="audio/mpeg">
+  <source src="music.ogg" type="audio/ogg">
+</audio>
+
+<script>
+  function startMusic() {
+    const audio = document.getElementById('bg-music');
+    if (audio && audio.paused) {
+      audio.volume = 0.5; // volume più basso
+      audio.play().then(() => {
+        console.log("Musica avviata");
+      }).catch(err => {
+        console.log("Errore nella riproduzione audio:", err);
+      });
+    }
+    document.removeEventListener('click', startMusic);
+    document.removeEventListener('touchstart', startMusic);
+  }
+
+  // Avvia al primo click o tocco
+  document.addEventListener('click', startMusic, { once: true });
+  document.addEventListener('touchstart', startMusic, { once: true });
+</script>
+
+
+
+  
 <div id="pano"></div>
 
 <div id="sceneList">
